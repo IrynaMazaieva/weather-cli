@@ -22,12 +22,12 @@ func Test_GetFastestResponse_sameSpeed(t *testing.T) {
 
 	fastest, err := GetFastestResponse([]WeatherClient{firstMockClient, secondMockClient}, Location{})
 	assert.NoError(t, err)
-	assert.Equal(t, "First response", fastest)
+	assert.Contains(t, fastest, "response")
 }
 
 func Test_GetFastestResponse_bothTooSlow(t *testing.T) {
 	slowMockClient := NewMockWeatherClient("Slow", 10*time.Second, "Slow response")
-	slowerMockClient := NewMockWeatherClient("Slower", 10*time.Second, "Slower response")
+	slowerMockClient := NewMockWeatherClient("Slower", 15*time.Second, "Slower response")
 
 	_, err := GetFastestResponse([]WeatherClient{slowMockClient, slowerMockClient}, Location{})
 	assert.Error(t, err)

@@ -12,6 +12,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - uses: './.github/actions/setup-go'
 
       - name: Run Static Analysis
@@ -23,6 +26,9 @@ jobs:
     needs: validate
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - uses: './.github/actions/setup-go'
 
       - name: Run Unit Tests
@@ -32,6 +38,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - uses: './.github/actions/setup-go'
 
       - name: Build Binary

@@ -19,8 +19,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.23'
-          cache: 'true' # To speed up builds by caching dependencies
+          go-version-file: 'go.mod'
 
       - name: Install Dependencies
         run: go mod tidy

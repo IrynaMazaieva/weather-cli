@@ -16,9 +16,9 @@ jobs:
 
       - name: Build binaries
         run: |
-          GOOS=linux GOARCH=amd64 go build -o weather-cli-linux-amd64 ./cmd/weather-cli
-          GOOS=darwin GOARCH=amd64 go build -o weather-cli-macos-amd64 ./cmd/weather-cli
-          GOOS=windows GOARCH=amd64 go build -o weather-cli-windows-amd64.exe ./cmd/weather-cli
+          GOOS=linux GOARCH=amd64 go build -o weather-cli-linux-amd64 ./
+          GOOS=darwin GOARCH=amd64 go build -o weather-cli-macos-amd64 ./
+          GOOS=windows GOARCH=amd64 go build -o weather-cli-windows-amd64.exe ./
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

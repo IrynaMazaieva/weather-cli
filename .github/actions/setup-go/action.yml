@@ -1,0 +1,17 @@
+name: "Setup Go Environment"
+description: "Sets up Go and installs dependencies"
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version-file: 'go.mod'
+
+    - name: Install Dependencies
+      shell: bash
+      run: go mod tidy
+
+    - name: Add Go Tools to PATH
+      shell: bash
+      run: echo "$HOME/go/bin" >> $GITHUB_PATH

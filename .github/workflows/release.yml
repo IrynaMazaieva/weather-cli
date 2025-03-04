@@ -1,0 +1,29 @@
+name: Release CLI
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: './.github/actions/setup-go'
+
+      - name: Build binaries
+        run: |
+          GOOS=linux GOARCH=amd64 go build -o weather-cli-linux-amd64 ./cmd/weather-cli
+          GOOS=darwin GOARCH=amd64 go build -o weather-cli-macos-amd64 ./cmd/weather-cli
+          GOOS=windows GOARCH=amd64 go build -o weather-cli-windows-amd64.exe ./cmd/weather-cli
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            weather-cli-linux-amd64
+            weather-cli-macos-amd64
+            weather-cli-windows-amd64.exe

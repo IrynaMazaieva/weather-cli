@@ -6,7 +6,7 @@ CLI application in Go that accepts a country and a city as input and returns the
 
 To install the project you can simply run the command: 
 ```bash
-curl -sSL https://github.com/IrynaMazaieva/weather-cli/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/IrynaMazaieva/weather-cli/main/install.sh | bash
 ```
 
 ## Installation
